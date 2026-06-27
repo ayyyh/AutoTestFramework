@@ -49,7 +49,7 @@ def verify_user_in_db(conn, username, api_email):
 
 @pytest.mark.parametrize("case", test_cases, ids=lambda c: c["desc"])
 def test_login(db, case):
-    print(f"👉 测试：{case['desc']} (账号: '{case['username']}')")
+    print(f"👉 [远程修改] 测试：{case['desc']} (账号: '{case['username']}')")
     method = 'post'
     response = requests.request(method, url, json={"username": case["username"], "password": case["password"]})
     is_passed, error_msg = check_login_result(response, case["expect"])
