@@ -1,0 +1,4 @@
+2025-01-01 10:00:00 INFO 服务启动成功
+2025-01-01 10:05:00 ERROR NullPointerException at UserService
+2025-01-01 10:10:00 INFO 请求处理完成
+echo "2025-01-01 10:15:00 ERROR Connection timed out" >> app.log

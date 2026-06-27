@@ -1,0 +1,26 @@
+[
+  {
+    "username": "emilys",
+    "password": "emilyspass",
+    "desc": "正确账号密码",
+    "expect": "success"
+  },
+  {
+    "username": "emilys",
+    "password": "123456",
+    "desc": "密码错误",
+    "expect": "fail"
+  },
+  {
+    "username": "human",
+    "password": "18293",
+    "desc": "用户不存在",
+    "expect": "fail"
+  },
+  {
+    "username": "",
+    "password": "2425",
+    "desc": "用户名为空",
+    "expect": "fail"
+  }
+]
