@@ -1,7 +1,6 @@
 import requests
-import json
 import pytest
-import sqlite3
+
 
 import yaml
 
@@ -14,11 +13,7 @@ with open("data.yaml", "r", encoding="utf-8") as f:
 #     test_cases = json.load(f)
 
 
-@pytest.fixture()
-def db():
-    conn = sqlite3.connect("test_db.db")
-    yield conn
-    conn.close()
+
 
 
 def check_login_result(response, expected):
