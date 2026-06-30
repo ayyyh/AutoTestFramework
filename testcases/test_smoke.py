@@ -8,7 +8,7 @@ import yaml
 url = "https://dummyjson.com/auth/login"
 
 # 加载测试用例，只取"正确账号密码"那一条
-with open("data.yaml", "r", encoding="utf-8") as f:
+with open("data/data.yaml", "r", encoding="utf-8") as f:
     all_cases = yaml.safe_load(f)
 
 smoke_case = [c for c in all_cases if c["desc"] == "正确账号密码"][0]
