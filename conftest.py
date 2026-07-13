@@ -4,11 +4,11 @@ import datetime
 
 @pytest.fixture(scope='function')
 def db():
-    print(1)
+    # print(1)
     conn = sqlite3.connect("test_db.db")
     yield conn
     conn.close()
-    print(2)
+    # print(2)
 
 # conftest.py
 @pytest.fixture(autouse=True)
