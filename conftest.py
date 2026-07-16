@@ -1,7 +1,7 @@
 import pytest
 import sqlite3
 import datetime
-
+import requests
 @pytest.fixture(scope='function')
 def db():
     # print(1)
@@ -9,6 +9,18 @@ def db():
     yield conn
     conn.close()
     # print(2)
+
+# conftest.py 新增内容（放在现有 db fixture 后面）
+@pytest.fixture(scope="session")
+def login_token():
+    """登录并返回 accessToken，session 级别只登录一次"""
+    login_url = "https://dummyjson.com/auth/login"
+    payload = {"username": "emilys", "password": "emilyspass"}
+    response = requests.post(login_url, json=payload)
+    assert response.status_code == 200
+    token = response.json()["accessToken"]
+    print(f"\n🔑 登录成功，Token 已获取（仅供购物车测试使用）")
+    return token
 
 # conftest.py
 @pytest.fixture(autouse=True)
