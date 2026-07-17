@@ -1,7 +1,4 @@
-# testcases/test_main.py 顶部添加
-import os
-os.environ['HTTP_PROXY'] = ''
-os.environ['HTTPS_PROXY'] = ''
+
 import requests
 import pytest
 import yaml
