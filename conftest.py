@@ -2,6 +2,13 @@ import pytest
 import sqlite3
 import datetime
 import requests
+import os
+# 全局禁用代理
+os.environ['HTTP_PROXY'] = ''
+os.environ['HTTPS_PROXY'] = ''
+os.environ['NO_PROXY'] = '*'
+
+
 @pytest.fixture(scope='function')
 def db():
     # print(1)
