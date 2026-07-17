@@ -28,12 +28,16 @@ pipeline {
     }
 
     post {
-        always {
-            publishHTML ([
-                reportDir: './allure-report',
-                reportFiles: 'index.html',
-                reportName: 'Allure Report'
-            ])
-        }
+    always {
+        junit 'reports/junit.xml'
+        publishHTML([
+            reportDir: './allure-report',
+            reportFiles: 'index.html',
+            reportName: 'Allure Report',
+            allowMissing: false,
+            alwaysLinkToLastBuild: true,
+            keepAll: false
+        ])
     }
+}
 }
