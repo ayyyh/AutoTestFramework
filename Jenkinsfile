@@ -29,7 +29,6 @@ pipeline {
 
     post {
     always {
-        junit 'reports/junit.xml'
         publishHTML([
             reportDir: './allure-report',
             reportFiles: 'index.html',
