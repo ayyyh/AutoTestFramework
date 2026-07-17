@@ -19,11 +19,21 @@ pipeline {
                 bat 'pytest testcases/ --alluredir=./reports'
             }
         }
+
+        stage('生成 Allure 报告') {
+            steps {
+                bat 'allure generate ./reports --clean -o ./allure-report'
+            }
+        }
     }
 
     post {
-    always {
-        allure 'reports'
+        always {
+            publishHTML ([
+                reportDir: './allure-report',
+                reportFiles: 'index.html',
+                reportName: 'Allure Report'
+            ])
+        }
     }
-}
 }
