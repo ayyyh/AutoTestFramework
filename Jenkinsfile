@@ -22,8 +22,8 @@ pipeline {
     }
 
     post {
-        always {
-            allure results: [[path: 'reports']]
-        }
+    always {
+        allure 'reports'
     }
+}
 }
