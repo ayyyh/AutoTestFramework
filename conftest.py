@@ -3,6 +3,8 @@ import sqlite3
 import datetime
 import requests
 import os
+from playwright.sync_api import sync_playwright
+
 # 全局禁用代理
 os.environ['HTTP_PROXY'] = ''
 os.environ['HTTPS_PROXY'] = ''
@@ -40,3 +42,11 @@ def print_test_timings():
     end = datetime.datetime.now()
     duration = (end - start).total_seconds()
     print(f"⏰ 用例结束时间: {end.strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]}  耗时: {duration:.3f}秒")
+
+@pytest.fixture(scope="function")
+def page():
+    with sync_playwright() as p:
+        browser=p.chromium.launch(headless=True)
+        page=browser.new_page()
+        yield page
+        browser.close()
